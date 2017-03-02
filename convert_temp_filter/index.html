@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" ng-app='tempApp'>
+<head>
+	<meta charset="UTF-8">
+	<title>Temperature Converter</title>
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<!--<link rel="stylesheet" href="styles.css">-->
+	
+
+	<script src="https://code.jquery.com/jquery-3.1.1.js"></script>
+  <script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js'></script>
+	<script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.js'></script>
+	
+</head>
+<body ng-controller='mainController'>
+	
+	<div class="container">
+
+
+		<div class="row">
+			<div class="col-sm-4 col-sm-offset-4">
+				<input type="text" placeholder='Latitude' ng-model='temp.lat'class='form-control' >
+				<input type="text" placeholder='Longitude' ng-model='temp.long' class='form-control' >
+
+				<button class="btn btn-default" class="form-control" ng-click='getTemp(temp.lat, temp.long)'>Get Temperature</button>
+				
+				<!-- <div class="btn-group">
+ 				 <button type="button" ng-model='type' class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    				Type <span class="caret"></span>
+  			 </button>
+  			<ul class="dropdown-menu" >
+    		<li><a href="#" value='Farenheit' ng-click='getFar(cur)'>Farenheit</a></li>
+    		<li><a href="#" value='Celsius' ng-click='getCels(cur)'>Celsius</a></li>
+    		<li><a href="#" value='Kelvin' ng-click='getKelv(cur)'>Kelvin</a></li>
+  			</ul>
+			</div> -->
+
+				<select ng-init="type=tempTypes[0].value" ng-model="type" ng-options="option.value as option.name for option in tempTypes">
+					<!-- <option value="farenheit" selected>°F</option>
+				  <option value="celsius">°C</option>
+		  		<option value="kelvin">°K</option> -->
+				</select>
+				<h1 ng-show="cur">{{cur | temps: type }}</h1>
+			</div>
+		</div>
+
+		
+	
+
+	
+	<script src='app.js'></script>
+</body>
+</html>
